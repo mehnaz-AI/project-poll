@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Discussion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            color: #555;
+        }
+        .poll {
+            margin: 20px 0;
+        }
+        .poll label {
+            display: block;
+            margin: 10px 0;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Discussion</h1>
+        <p>We are having very few days to start working on our project. Please take it seriously and make time for it. Let's work together. Regards, your teammate.</p>
+        <div class="poll">
+            <h2>Are you ready to work on the same project or make a new one?</h2>
+            <label>
+                <input type="radio" name="project" value="same_project">
+                Same Project
+            </label>
+            <label>
+                <input type="radio" name="project" value="new_project">
+                New Project
+            </label>
+            <label>
+                <input type="radio" name="project" value="new_idea">
+                Write Down Your Idea
+                <textarea name="idea" rows="4" cols="50"></textarea>
+            </label>
+        </div>
+        <div class="poll">
+            <h2>When are you available to work on the project?</h2>
+            <label>
+                <input type="radio" name="availability" value="monday_tuesday">
+                Monday and Tuesday
+            </label>
+            <label>
+                <input type="radio" name="availability" value="wednesday_thursday">
+                Wednesday and Thursday
+            </label>
+            <label>
+                <input type="radio" name="availability" value="anytime">
+                Anytime
+            </label>
+        </div>
+        <button class="submit-btn" onclick="submitPoll()">Submit</button>
+    </div>
+
+    <script>
+        function submitPoll() {
+            const project = document.querySelector('input[name="project"]:checked') ? document.querySelector('input[name="project"]:checked').value : null;
+            const idea = document.querySelector('textarea[name="idea"]').value;
+            const availability = document.querySelector('input[name="availability"]:checked') ? document.querySelector('input[name="availability"]:checked').value : null;
+
+            if (!project) {
+                alert('Please select an option for the first poll.');
+                return;
+            }
+
+            if (project === 'new_idea' && !idea) {
+                alert('Please write down your idea.');
+                return;
+            }
+
+            if (!availability) {
+                alert('Please select an option for the second poll.');
+                return;
+            }
+
+            alert('Poll submitted successfully!\nProject: ' + project + (idea ? '\nIdea: ' + idea : '') + '\nAvailability: ' + availability);
+        }
+    </script>
+</body>
+</html>
